@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>All Person</h1>
+
+    <form action="" method="post">
+      {% csrf_token %} {{forms.as_p}}
+      <input type="submit" value="submit" /> <br />
+      <br />
+    </form>
+
+    {% for person in persons %}
+    <table border="1" width="40%">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Name</th>
+          <th>Adress</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>{{person.id}}</td>
+          <td>{{person.name}}</td>
+          <td>{{person.address}}</td>
+          <td>
+            <a href="/app4_1/Update_view?id={{person.id}}">update</a> |
+            <a href="/app4_1/delete?id={{person.id}}">delete</a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    {% endfor %}
+  </body>
+</html>
